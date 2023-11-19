@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Course Information</title>
+</head>
+<body>
+<h1>Course Details</h1>
+<div id="courseInfo"></div>
+
+<script>
+        // Your JSON data
+        var jsonData = [
+            {
+                "id": "B1116",
+                "date": "2023-12-01T00:00:00.000+00:00",
+                "course": "Progtech",
+                "location": "B181",
+                "user": {
+                    "id": "IT21",
+                    "name": "Kiss Albert",
+                    "role": "TEACHER"
+                },
+                "maxStudents": 3,
+                "registeredStudents": []
+            }
+        ];
+
+        // Function to display the data
+        function displayData() {
+            var dataDiv = document.getElementById('courseInfo');
+
+            jsonData.forEach(function(item) {
+                var courseDetails = '<p><strong>ID:</strong> ' + item.id + '</p>';
+                courseDetails += '<p><strong>Date:</strong> ' + item.date + '</p>';
+                courseDetails += '<p><strong>Course:</strong> ' + item.course + '</p>';
+                courseDetails += '<p><strong>Location:</strong> ' + item.location + '</p>';
+                courseDetails += '<p><strong>Teacher ID:</strong> ' + item.user.id + '</p>';
+                courseDetails += '<p><strong>Teacher Name:</strong> ' + item.user.name + '</p>';
+                courseDetails += '<p><strong>Teacher Role:</strong> ' + item.user.role + '</p>';
+                courseDetails += '<p><strong>Max Students:</strong> ' + item.maxStudents + '</p>';
+                courseDetails += '<p><strong>Registered Students:</strong> ' + (item.registeredStudents.length > 0 ? item.registeredStudents.join(', ') : 'None') + '</p>';
+
+                dataDiv.innerHTML += courseDetails;
+            });
+        }
+
+        // Call the function on page load
+        window.onload = displayData;
+    </script>
+</body>
+</html>
